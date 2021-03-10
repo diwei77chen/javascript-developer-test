@@ -3,7 +3,7 @@ const { httpGet } = require('./mock-http-interface');
 /**
  * Formats an Arnie quote response
  * @param {object} response A http response
- * @returns {object}
+ * @returns {object} An object which contains the response's message
  */
 const formatArnieQuoteResponse = (response) => {
   const successResultKey = 'Arnie Quote';
@@ -17,7 +17,7 @@ const formatArnieQuoteResponse = (response) => {
 /**
  * Executes a HTTP GET request on each of the URLs, transforms each of the HTTP responses.
  * @param {string[]} urls The urls to be requested
- * @returns {Promise} 
+ * @returns {Promise} A promise which resolves to a results array
  */
 const getArnieQuotes = async (urls) => {
   return Promise.allSettled(
