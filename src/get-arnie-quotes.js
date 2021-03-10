@@ -20,12 +20,9 @@ const formatArnieQuoteResponse = (response) => {
  * @returns {Promise} A promise which resolves to a results array
  */
 const getArnieQuotes = async (urls) => {
-  return Promise.allSettled(
-    urls.map((url) => httpGet(url))
-  ).then(
-    (results) => results.map(
-      ({ value } = {}) => formatArnieQuoteResponse(value)
-    )
+  const results = await Promise.allSettled(urls.map((url) => httpGet(url)));
+  return results.map(
+    ({ value } = {}) => formatArnieQuoteResponse(value)
   );
 };
 
