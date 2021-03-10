@@ -9,7 +9,7 @@ const formatArnieQuoteResponse = (response) => {
   const successResultKey = 'Arnie Quote';
   const failureResultKey = 'FAILURE';
   const { status, body } = response || {};
-  const { message } = JSON.parse(body) || {};
+  const { message } = body ? JSON.parse(body) : {};
   if (status !== 200) return { [failureResultKey]: message }
   return { [successResultKey]: message };
 }
